@@ -22,7 +22,7 @@ public class WebSocketEventListener {
     }
 
     @EventListener
-    public void hendleWwebSocketDisconnectEvent(SessionDisconnectEvent event){
+    public void handleWebSocketDisconnectEvent(SessionDisconnectEvent event){
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         String userName = (String) headerAccessor.getSessionAttributes().get("username");
         if(userName!=null){
