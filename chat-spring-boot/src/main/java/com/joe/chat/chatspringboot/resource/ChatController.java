@@ -34,6 +34,7 @@ public class ChatController {
             Message leave= new Message();
             leave.setContent(userName +" left the chat");
             leave.setType(Type.LEAVE);
+            leave.setSender(userName);
             template.convertAndSend("/chat",leave);
         }
     }

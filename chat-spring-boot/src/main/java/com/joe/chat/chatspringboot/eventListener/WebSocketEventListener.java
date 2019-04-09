@@ -23,11 +23,12 @@ public class WebSocketEventListener {
 
     @EventListener
     public void handleWebSocketDisconnectEvent(SessionDisconnectEvent event){
+        System.out.println("Connection disconnected");
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         String userName = (String) headerAccessor.getSessionAttributes().get("username");
         if(userName!=null){
             Message leave= new Message();
-            leave.setContent(userName +" left the chat");
+            leave.setContent(userName +" LEFT THE CHAT !!!!!");
             leave.setType(Type.LEAVE);
             template.convertAndSend("/chat",leave);
         }
